@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 import 'package:todo/shared/components/commponents.dart';
 import 'package:todo/shared/cubit/cubit.dart';
 import 'package:todo/shared/cubit/states.dart';
+
+import '../moduls/privcy/privcy.dart';
 
 /*
 1- create data base
@@ -43,6 +46,17 @@ class Home_Layout extends StatelessWidget
          return Scaffold(
            key: scafoldKey,
             appBar: AppBar(
+              actions: [
+                ElevatedButton(onPressed: (){
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => privcy(),));
+
+                },style: ButtonStyle(
+                  elevation: MaterialStateProperty.all(0.0),
+                  backgroundColor: MaterialStateProperty.all(Colors.blueAccent)
+                    
+                  
+                ), child: Icon(Icons.info))
+              ],
               title: Center(child: Text(cubit.titles[cubit.CurrentIndex],
                 style: TextStyle(
                     fontWeight: FontWeight.bold,
@@ -190,3 +204,4 @@ class Home_Layout extends StatelessWidget
     );
   }
 }
+
